@@ -1,3 +1,0 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(411,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (TransposeMatrix.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Run.cpp
-  TransposeMatrix.vcxproj -> E:\Programming Projects\Programming Problems and Challenges\TransposeMatrix\Debug\MatrixMachine.exe
