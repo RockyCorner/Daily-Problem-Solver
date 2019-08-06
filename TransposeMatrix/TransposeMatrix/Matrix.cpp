@@ -81,7 +81,43 @@ Matrix Matrix::transpose() {
 
 /* Returns the determinant of this matrix */
 int Matrix::determinant() {
+	if (row != col) {
+		std::cout << "Determinant not calculated: This matrix is not a square matrix\n";
+		return -1;
+	}
+	return calculateDet(0, 0, -1, -1, row);
+}
 
+/*	Calculates the determinant of a square matrix
+	Parameters:
+		- removeRow: Row that is eliminated in the matrix minor
+		- removeColumn: Row that is eliminated in the matrix minor
+		- size: indicates the size of the matrix minor
+			a matrix minor of size one has det = (1,1) of the matrix minor
+
+	Author: Craig Aucoin
+*/
+int Matrix::calculateDet(int firstRow, int firstColumn, int removeRow, int removeCol, int size) {
+	int determinant = 0;
+	for (int column = 0; column < size; column++) {
+		// Find the value of the in the first row of j
+		int rowTemp = firstRow;
+		int colTemp = firstColumn;
+		//get the first row for the next matrix minor
+		firstRow++;
+		if (firstRow == removeRow) {
+			firstRow++;
+		}
+		// get the first row for the next matrix minor
+		if (column == firstColumn) {
+			firstColumn++;
+			if (firstColumn == removeCol) {
+				firstColumn++;
+			}
+		}
+
+	}
+	return determinant;
 }
 
 /* Returns the inverse of this matrix */
@@ -98,4 +134,9 @@ void Matrix::printMatrix() {
 		std::cout << "\n";
 	}
 	std::cout << "\n";
+}
+
+void Matrix::exitOnBadAlloc() {
+	std::cerr << "ERROR: Bad Memory Allocation\n";
+	exit(1);
 }

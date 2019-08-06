@@ -1,5 +1,6 @@
-/* This Program computes the transpose of an m x n matrix
-	Problem 18 From Intro. to 3D Game Programming with DirectX12
+/* This Program creates a matrix, and then computes multiple different
+	Operations on the matrix
+	Problem 18 & 19 From Intro. to 3D Game Programming with DirectX12 Included in this program
 	Author: Craig Aucoin
 */
 
@@ -20,23 +21,13 @@ int main() {
 	std::cout << "Enter the number of columns: ";
 	std::cin >> n;
 
-	// Transpose the matrix
-	int** transpose = new int* [n];
-	for (int i = 0; i < n; i++) {
-		try {
-			transpose[i] = new int[m];
-			for (int j = 0; j < m; j++) {
-				transpose[i][j] = matrix[j][i];
-			}
-		}
-		catch (bad_alloc) {
-			exitOnBadAlloc();
-		}
-	}
+	Matrix matrix = Matrix(m, n);
+	matrix.printMatrix();
+	Matrix transpose = matrix.transpose();
+	transpose.printMatrix();
+	Matrix inverse = matrix.inverse();
+	inverse.printMatrix();
 
-	// Print out the transpose matrix
-	std::cout << "Transpos3e Matrix: \n";
-	printMatrix(transpose, n, m);
 
 	return 0;
 }
