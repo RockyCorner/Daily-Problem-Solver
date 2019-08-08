@@ -25,8 +25,6 @@ int main() {
 	matrix.printMatrix();
 	Matrix transpose = matrix.transpose();
 	transpose.printMatrix();
-	Matrix inverse = matrix.inverse();
-	inverse.printMatrix();
 
 
 	return 0;

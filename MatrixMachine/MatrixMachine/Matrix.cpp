@@ -79,7 +79,10 @@ Matrix Matrix::transpose() {
 	return Matrix(transpose, col, row);
 }
 
-/* Returns the determinant of this matrix */
+/* Returns the determinant of this matrix 
+ * This Starts at the first row and column
+*	NOT COMPLETED
+*/
 int Matrix::determinant() {
 	if (row != col) {
 		std::cout << "Determinant not calculated: This matrix is not a square matrix\n";
@@ -96,9 +99,13 @@ int Matrix::determinant() {
 			a matrix minor of size one has det = (1,1) of the matrix minor
 
 	Author: Craig Aucoin
+	NOT COMPLETED
 */
 int Matrix::calculateDet(int firstRow, int firstColumn, int removeRow, int removeCol, int size) {
 	int determinant = 0;
+	if (size == 1) {
+		return matrix[firstRow][firstColumn];
+	}
 	for (int column = 0; column < size; column++) {
 		// Find the value of the in the first row of j
 		int rowTemp = firstRow;
@@ -115,14 +122,27 @@ int Matrix::calculateDet(int firstRow, int firstColumn, int removeRow, int remov
 				firstColumn++;
 			}
 		}
-
+		determinant += matrix[rowTemp][column] * pow(-1, 1 + (column + 1))
+			* calculateDet(firstRow, firstColumn, rowTemp, column, size - 1);
 	}
 	return determinant;
 }
 
-/* Returns the inverse of this matrix */
+/* Returns the inverse of this matrix 
+ * NOT COMPLETED
+*/
 Matrix Matrix::inverse() {
-
+	if (row != col) {
+		std::cout << "Invalid: this matrix is not a square matrix\n";
+		Matrix* nullMatrix = nullptr;
+		return *nullMatrix;
+	}
+	Matrix cofactorMatrix = Matrix(row, col);
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < col; j++) {
+			cofactorMatrix.matrix[i][j] = pow(-1, i + j)*
+		}
+	}
 }
 
 /* prints this matrix */
