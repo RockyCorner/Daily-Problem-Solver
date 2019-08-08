@@ -4,7 +4,7 @@
 	Author: Craig Aucoin
 */
 
-#include "Matrix.h"
+#include "Matrix4x4.h"
 #include <iostream>
 
 
@@ -14,20 +14,18 @@ void exitOnBadAlloc();
 void printMatrix(int**, int, int);
 
 int main() {
-	/* Size components of matrix */
-	int m, n;
-	std::cout << "Enter the number of rows: ";
-	std::cin >> m;
-	std::cout << "Enter the number of columns: ";
-	std::cin >> n;
+	// 4x4 Matrix to calculate determinant
+	Matrix4x4 fourByfour = Matrix4x4();
+	
+	std::cout << "Determinant of 4x4 Matrix: " << fourByfour.determinant();
+	//Matrix inverse = fourByfour.inverse();
 
-	Matrix matrix = Matrix(m, n);
-	matrix.printMatrix();
-	Matrix transpose = matrix.transpose();
-	transpose.printMatrix();
+	/*
+	inverse.printMatrix();
 
 
 	return 0;
+	*/
 }
 
 
